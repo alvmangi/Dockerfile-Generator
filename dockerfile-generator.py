@@ -166,7 +166,8 @@ if __name__ == "__main__":
     generate_dockerfile_with_openai(args.project_dir, env_file=args.env_file, env_vars=args.env_vars)
     print("\n-----------------------------------------\n")
     generate_docker_compose_with_openai(args.project_dir, env_file=args.env_file, env_vars=args.env_vars)
-
+    
     if args.ecs:
+        print("\n-----------------------------------------\n")
         generate_ecs_task_definition_with_openai(args.project_dir)
 
