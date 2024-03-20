@@ -108,7 +108,7 @@ def generate_dockerfile_with_openai(project_dir, env_file="", env_vars=""):
     model="gpt-3.5-turbo-instruct",
     prompt=prompt_dockerfile,
     temperature=0,
-    max_tokens=350,
+    max_tokens=2048,
     top_p=1.0,
     frequency_penalty=0.0,
     presence_penalty=0.0)
@@ -125,7 +125,7 @@ def generate_docker_compose_with_openai(project_dir, env_file="", env_vars=""):
     model="gpt-3.5-turbo-instruct",
     prompt=prompt,
     temperature=0,
-    max_tokens=350,
+    max_tokens=2048,
     top_p=1.0,
     frequency_penalty=0.0,
     presence_penalty=0.0)
@@ -141,7 +141,7 @@ def generate_ecs_task_definition_with_openai(project_dir):
     model="gpt-3.5-turbo-instruct",
     prompt=prompt_ecs,
     temperature=0,
-    max_tokens=500,
+    max_tokens=2048,
     top_p=1.0,
     frequency_penalty=0.0,
     presence_penalty=0.0)
