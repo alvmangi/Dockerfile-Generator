@@ -6,7 +6,9 @@ import json
 import xml.etree.ElementTree as ET
 
 # Configure your OpenAI API key
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+client_dockerfile = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+client_docker_compose = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+client_ecs_task_definition = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 # Command-line arguments
 parser = argparse.ArgumentParser(description="Dockerfile and docker-compose.yml generator using OpenAI")
@@ -104,7 +106,7 @@ def generate_dockerfile_with_openai(project_dir, env_file="", env_vars=""):
         env_details += f"and direct environment variables {env_vars}." if env_vars else ""
         prompt_dockerfile += f" {env_details}"
     
-    response = client.completions.create(
+    response = client_dockerfile.completions.create(
     model="gpt-3.5-turbo-instruct",
     prompt=prompt_dockerfile,
     temperature=0,
@@ -121,7 +123,7 @@ def generate_docker_compose_with_openai(project_dir, env_file="", env_vars=""):
     project_summary = summarize_project_structure(project_dir)
     prompt = f"Based on a project that {project_summary}, generate an appropriate docker-compose.yml. Apply best practices."
     
-    response = client.completions.create(
+    response = client_docker_compose.completions.create(
     model="gpt-3.5-turbo-instruct",
     prompt=prompt,
     temperature=0,
@@ -137,7 +139,7 @@ def generate_ecs_task_definition_with_openai(project_dir):
     project_summary = summarize_project_structure(project_dir)
     prompt_ecs = f"Generate an AWS ECS Fargate task definition for a project that {project_summary}, considering best practices."
     
-    response = client.completions.create(
+    response = client_ecs_task_definition.completions.create(
     model="gpt-3.5-turbo-instruct",
     prompt=prompt_ecs,
     temperature=0,
