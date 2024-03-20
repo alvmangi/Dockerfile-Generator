@@ -1,10 +1,10 @@
-1. Remember to install the required libraries:
+Remember to install the required libraries:
    pip install -r requirements.txt
    
-2. Add yuur OpenAI API Key as an env variable:
+Add your OpenAI API Key as an env variable:
    export env OPENAI_API_KEY="your_openai_key"
   
-3. Run the script:
+Run the script:
    usage: dockerfile-generator.py [-h] [--env-file ENV_FILE] [--env-vars ENV_VARS] [--ecs] project_dir
    Dockerfile and docker-compose.yml generator using OpenAI
 
